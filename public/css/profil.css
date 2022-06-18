@@ -1,0 +1,108 @@
+.backround {
+    background-color: rgb(238, 238, 238);
+}
+
+.bgcolor {
+    background-color: rgb(31, 59, 138);
+}
+
+.colorblue {
+    color: rgb(8, 48, 94);
+}
+
+.barcolor {
+    background: rgb(238, 241, 246);
+}
+
+.colorgreen {
+    color: rgb(95, 185, 84);
+
+}
+
+
+.heightbar {
+    height: 550px;
+}
+
+.colortext {
+    color: rgb(7, 120, 109);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 2px;
+    font-weight: 700;
+}
+
+.colorblue {
+    color: rgb(8, 48, 94);
+}
+
+.barcolor {
+    background: rgb(238, 241, 246);
+}
+
+.colorgreen {
+    color: rgb(95, 185, 84);
+}
+
+.border {
+    border-width: 1px;
+    border-color: rgb(8, 48, 94);
+    box-shadow: 0px 1px 0px 0px rgb(8, 48, 94);
+}
+
+.borderpost {
+    border-width: 0px;
+    border-color: rgb(216, 218, 228);
+
+}
+
+.border1 {
+    border-width: 1px;
+    background: purple;
+    height: 70px;
+    width: 700px;
+}
+
+
+
+
+
+
+.bordercolor {
+    border-width: 2px;
+    border-color: beige;
+
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+#rightbox {
+    float: right;
+}
+
+
+
+.container {
+    margin: 0 auto;
+}
+
+.top {
+    position: top 300px;
+
+
+}
+
+.img {
+    width: 400px;
+    height: 200px;
+    border: 2px solid #fff;
+    background: url(img/tiger.png) no-repeat;
+    box-shadow: 10px 10px 5px #ccc;
+    -moz-box-shadow: 10px 10px 5px #ccc;
+    -webkit-box-shadow: 10px 10px 5px #ccc;
+    -khtml-box-shadow: 10px 10px 5px #ccc;
+}
+
+.margin {
+
+    margin-right: 60px;
+}
