@@ -22,11 +22,10 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'gender',
         'bio',
-        'date_of_birth',
         'url_photos',
-
+        'gender',
+        'school'
     ];
 
     /**
@@ -47,4 +46,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+    public function friendship(){
+        return $this->belongsToMany(User::class,'friendship','source_id','target_id');
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class,'sender_id');
+    }
+    public function received_messages(){
+        return $this->hasMany(Message::class,'receiver_id');
+    }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("title");
             $table->dateTime("createdAt");
             $table->dateTime("deletedAt")->nullable();
-
+            $table->string("type");
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->onUpdate('cascade')
