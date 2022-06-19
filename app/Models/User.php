@@ -61,4 +61,9 @@ class User extends Authenticatable
     public function received_messages(){
         return $this->hasMany(Message::class,'receiver_id');
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class,'user_id');
+    }
 }

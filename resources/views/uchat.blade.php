@@ -75,11 +75,11 @@
 
 
     </div>
-    <a href="javascript: void(0);" onClick="toggle('q4')">
+    <a href="javascript: void(0);" onClick="toggle('q6')">
         <button> send message</button>
     </a>
 
-    <div id="q4" style="display:none;" id="wrapper">
+    <div id="q6" style="display:none;" id="wrapper">
 
         <div id="sms_div">
             <form method="post" action="/save_message">

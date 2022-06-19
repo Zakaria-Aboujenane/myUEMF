@@ -21,8 +21,6 @@ class ProfileController extends Controller
     }
     public function show_All_users(){
         $users = \App\Models\User::all()->except(auth()->user()->id);
-//        $users = array();
-
         return view('ufriends',['users'=>$users]);
 
     }

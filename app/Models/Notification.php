@@ -20,5 +20,8 @@ class Notification extends Model
         'description',
         'createdAt',
     ];
+    public function owner(){
+        return $this->belongsTo(User::class,'concerned_id');
+    }
 
 }

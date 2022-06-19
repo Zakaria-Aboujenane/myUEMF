@@ -19,13 +19,18 @@ Route::get('/', function () {
 
 Route::get('/login',[\App\Http\Controllers\LoginController::class,'gotoLogin']);
 Route::get('/posts',[\App\Http\Controllers\PostsController::class,'getAll']);
+Route::get('/home',[\App\Http\Controllers\PostsController::class,'getAll']);
 Route::get('/profil',[\App\Http\Controllers\ProfileController::class,'show_profile']);
 Route::get('/ufriends',[\App\Http\Controllers\ProfileController::class,'show_All_users']);
 Route::get('/uchat',[\App\Http\Controllers\ProfileController::class,'show_chats']);
 Route::get('/ushare',[\App\Http\Controllers\PostsController::class,'show_add_form']);
 Route::post('/save_post',[\App\Http\Controllers\PostsController::class,'save_post']);
 Route::post('/save_message',[\App\Http\Controllers\ProfileController::class,'save_message']);
+Route::post('/like',[\App\Http\Controllers\PostsController::class,'likeit']);
+Route::post('/dislike',[\App\Http\Controllers\PostsController::class,'dislikeit']);
 Route::get('/test',[\App\Http\Controllers\testing::class,'test']);
+Route::get('/unotice',[\App\Http\Controllers\NotificationsController::class,'getNotifications']);
+
 
 
 

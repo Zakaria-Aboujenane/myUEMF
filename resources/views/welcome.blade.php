@@ -21,6 +21,17 @@
                         @php
                             $poste = \App\Models\Post::find($post->id);
                             $user = $poste->user()->first();
+                            $color="white";
+                            $like = \App\Models\Like::where('post_id',$post->id)->where('user_id',auth()->user()->id);
+                            $likes = \App\Models\Like::where('post_id',$post->id)->count();
+                            $liked = "unliked";
+                            if( $like->first() != null){
+                                $color="red";
+                                $liked = "liked";
+                            }else{
+                                $color="white";
+                                $liked="unliked";
+                            }
                         @endphp
                         <img src="{{$user->url_photos}}"
                              class="h-16 w-16 ml-20 rounded-full mt-1  ring-2 ring-offset-1 ring-transparent" />
@@ -31,10 +42,21 @@
                         <p class="text-black text-lg font-mono ml-10 "> {{$post->createdAt}} </p>
                         <p class=" text-black text-lg font-normal ml-5 ">{{$post->title}} </p>
                     </div>
+
                 </div>
 
                 <div class=" ">
                     <img src="{{$post->content}}" class=" borderpost  max-h-96 max-w-6xl " />
+                </div>
+                <div class=" flex flex row">
+                    <div class="comment flex flex row">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                       <p id="nbrLikes{{$post->id}}">{{$likes}}</p>
+                        <lord-icon onclick="toggleLike({{$post->id}})" id="like{{$post->id}}" class="{{$liked}}" src="https://cdn.lordicon.com/kkcllwsu.json" trigger="click" colors="primary:{{$color}}"
+                                   style="width:45px;height:45px;">
+                        </lord-icon>
+
+                    </div>
                 </div>
             </div>
 
@@ -51,4 +73,61 @@
 
 
     </div>
+    <script>
+
+        function toggleLike(post_id){
+            el = document.getElementById("like"+post_id);
+            if(el.classList.contains("liked")){
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url:"/dislike",
+                    method:"POST", //First change type to method here
+
+                    data:{
+                        id_post: post_id,
+                        id_user:{{auth()->user()->id}}
+                    },
+                    success:function(response) {
+                        document.getElementById("nbrLikes"+post_id).innerHTML=response;
+                        el.classList.remove("liked");
+                        el.classList.add("unliked");
+                        el.setAttribute("colors", "primary:white");
+                    },
+                    error:function(){
+                        alert("error");
+                    }
+
+                });
+            }else{
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url:"/like",
+                    method:"POST", //First change type to method here
+
+                    data:{
+                        id_post: post_id,
+                        id_user:{{auth()->user()->id}}
+                    },
+                    success:function(response) {
+                        document.getElementById("nbrLikes"+post_id).innerHTML=response;
+                        el.classList.remove("unliked");
+                        el.classList.add("liked");
+                        el.setAttribute("colors", "primary:red");
+                    },
+                    error:function(){
+                        alert("error");
+                    }
+
+                });
+            }
+        }
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 @endsection

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{asset('js/app.js')}}"></script>
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
@@ -54,7 +55,7 @@
     <div class="fixed">
 
         <div class=" flex flex-col  justify-start items-center  heightbar   w-44 mt-28 ">
-            <a href="/"><button class="px-4 border-l-4 border-slate-400 rounded-sm ">
+            <a href="/home"><button class="px-4 border-l-4 border-slate-400 rounded-sm ">
                     <div class="flex flex-row justify-between items-center mt-2 w-28 mb-3 h-10">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/igpbsrza.json" trigger="hover" colors="primary:#0a2e5c"
